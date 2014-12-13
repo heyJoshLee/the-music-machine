@@ -1,0 +1,25 @@
+/* CSS */
+
+
+
+
+.square {
+    width: 25px;
+    height: 25px;
+    background-color: lightgray;
+    margin: 5px 1px;
+}
+
+.on {
+    background-color: red;
+}
+
+ul li {
+    list-style: none;
+}
+
+
+ul {
+    display: inline-block;
+    margin: 0px;
+}

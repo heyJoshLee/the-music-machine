@@ -1325,10 +1325,11 @@ var BPM = 60;
 var currentBeat = 1;
 var runTIme = function () {
     setInterval(function() {
-        if(currentBeat >= 14) {
-            currentBeat = 0;
-        }
-        currentBeat +=1;
+        if(currentBeat > 16) {
+            currentBeat = 1;
+        } 
+        
+        $('#light' + currentBeat).animate({opacity:1}, 200)
         $('#showTime').html(currentBeat);
      //   var currentColumn = '#column_' + currentBeat;
     //   $(currentColumn).animate({borderColor: "#CCC"} ,1000);
@@ -1340,6 +1341,9 @@ var runTIme = function () {
                 allSquares[j].sound.play();
                 j += 1;
         }
+        $('#light' + currentBeat).animate({opacity:.25}, 400)
+            currentBeat +=1;
+        
         //if(square1.x == currentBeat && square1.on == true) {
           //  square1.sound.play();
         //}
@@ -1349,7 +1353,7 @@ var runTIme = function () {
         
         
         
-    }, 500);
+    }, 1000);
     }();
     
 

@@ -7,7 +7,7 @@
     width: 25px;
     height: 25px;
     background-color: lightgray;
-    margin: 5px 1px;
+    margin: 5px 3px;
 }
 
 .on {
@@ -15,11 +15,29 @@
 }
 
 ul li {
-    list-style: none;
+    list-style: none; 
+    padding: 0 8px;
 }
 
 
 ul {
     display: inline-block;
     margin: 0px;
+    text-align: center;
+    padding: 0px;
+}
+
+#playArea {
+    margin: 0 auto;
+    text-align: center;
+    min-width: 800px;
+    width: 1200px;
+}
+
+#row1_11 {
+    
+}
+
+#column_1 {
+    background-color: green;
 }

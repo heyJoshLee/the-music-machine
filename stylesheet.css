@@ -73,3 +73,13 @@ ul {
 .instrument_selector ul {
     width: 100%:
 }
+
+.sound_bank-selector {
+    height: 60px;
+    color: white;
+}
+
+.sound_bank-selector ul li {
+    display: inline-block;
+}
+

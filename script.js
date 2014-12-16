@@ -113,6 +113,119 @@ var sound36 = new Howl({
 
 
 
+var synth1 = new Howl({
+  urls: ['audio/synth_1.mp3']
+});
+
+var sound2 = new Howl({
+    urls: ['audio/audio_2.mp3']
+});
+
+var sound3 = new Howl({
+    urls: ['audio/audio_3.mp3']
+});
+var sound4 = new Howl({
+    urls: ['audio/audio_4.mp3']
+});
+var sound5 = new Howl({
+    urls: ['audio/audio_5.mp3']
+});
+var sound6 = new Howl({
+    urls: ['audio/audio_6.mp3']
+});
+var sound7 = new Howl({
+    urls: ['audio/audio_7.mp3']
+});
+var sound8 = new Howl({
+    urls: ['audio/audio_8.mp3']
+});
+var sound9 = new Howl({
+    urls: ['audio/audio_9.mp3']
+});
+var sound10 = new Howl({
+    urls: ['audio/audio_10.mp3']
+});
+var sound11 = new Howl({
+    urls: ['audio/audio_11.mp3']
+});
+var sound12 = new Howl({
+    urls: ['audio/audio_12.mp3']
+});
+var sound13 = new Howl({
+    urls: ['audio/audio_13.mp3']
+});
+var sound14 = new Howl({
+    urls: ['audio/audio_14.mp3']
+});
+var sound15 = new Howl({
+    urls: ['audio/audio_15.mp3']
+});
+var sound16 = new Howl({
+    urls: ['audio/audio_16.mp3']
+});
+var sound17 = new Howl({
+    urls: ['audio/audio_17.mp3']
+});
+var sound18 = new Howl({
+    urls: ['audio/audio_18.mp3']
+});
+var sound19 = new Howl({
+    urls: ['audio/audio_19.mp3']
+});
+var sound20 = new Howl({
+    urls: ['audio/audio_20.mp3']
+});
+var sound21 = new Howl({
+    urls: ['audio/audio_21.mp3']
+});
+var sound22 = new Howl({
+    urls: ['audio/audio_22.mp3']
+});
+var sound23 = new Howl({
+    urls: ['audio/audio_23.mp3']
+});
+var sound24 = new Howl({
+    urls: ['audio/audio_24.mp3']
+});
+var sound25 = new Howl({
+    urls: ['audio/audio_25.mp3']
+});
+var sound26 = new Howl({
+    urls: ['audio/audio_26.mp3']
+});
+var sound27 = new Howl({
+    urls: ['audio/audio_27.mp3']
+});
+var sound28 = new Howl({
+    urls: ['audio/audio_28.mp3']
+});
+var sound29 = new Howl({
+    urls: ['audio/audio_29.mp3']
+});
+var sound30 = new Howl({
+    urls: ['audio/audio_30.mp3']
+});
+var sound31 = new Howl({
+    urls: ['audio/audio_31.mp3']
+});
+var sound32 = new Howl({
+    urls: ['audio/audio_32.mp3']
+});
+var sound33 = new Howl({
+    urls: ['audio/audio_33.mp3']
+});
+var sound34 = new Howl({
+    urls: ['audio/audio_34.mp3']
+});
+var sound35 = new Howl({
+    urls: ['audio/audio_35.mp3']
+});
+var sound36 = new Howl({
+    urls: ['audio/audio_36.mp3']
+});
+
+
+
 // creates the Square object
 function Square(x,y, sound, on) {
     this.x = x,
@@ -739,7 +852,7 @@ var square_16_34 = new Square(16, 34, sound3);
 var square_16_35 = new Square(16, 35, sound2);
 var square_16_36 = new Square(16, 36, sound1);
 
-var allSquares = [square_1_1,
+var page1Buttons = [square_1_1,
                   square_1_2,
                   square_1_3,
                   square_1_4,
@@ -1336,9 +1449,9 @@ var runTIme = function () {
         
         
         var j = 0;
-        while(j < allSquares.length) {
-            if (allSquares[j].x == currentBeat && allSquares[j].on == true)
-                allSquares[j].sound.play();
+        while(j < page1Buttons.length) {
+            if (page1Buttons[j].x == currentBeat && page1Buttons[j].on == true)
+                page1Buttons[j].sound.play();
                 j += 1;
         }
         $('#light' + currentBeat).animate({opacity:.25}, 400)
@@ -1357,19 +1470,24 @@ var runTIme = function () {
     }();
     
 
-/****
 
-$('#square_1').click(function() {
-    square1.on = !(square1.on);
-});
+/************************************************//************************************************//************************************************/
 
-    
 
-$('#square_6').click(function() {
-    square_6.on = !(square_6.on);
-});  
+var selectedVoice;
 
-****/
+var changeVoice = function () {
+    var h = 36;
+    $.each(page1Buttons, function(index, selectedVoice) {
+        index.sound = selectedVoice + h;
+        h -= 1;
+    })
+};
+
+
+/************************************************//************************************************//************************************************/
+
+
 
 $('.square').click(function() {
     $(this).toggleClass('on');

@@ -40,10 +40,43 @@ var fillPage1Buttons = function (){
         }
 }();
 
+
+// create daftArray and fill it
+var daftArray = [];
+var createDaft = function () {
+    var i = 0;
+    for(i; i <= 35; i ++) {
+        var addSound =   'audio/daft_'+ numMp3Array[i] + '.mp3';
+        daftArray[i] = new Howl({
+            urls: [addSound]
+        });
+    }  
+}();
+
+// create synthArray and fill it
+var synthArray = [];
+var createSynth= function () {
+    var i = 0;
+    for(i; i <= 35; i ++) {
+        var addSound =   'audio/synth_'+ numMp3Array[i] + '.mp3';
+        synthArray[i] = new Howl({
+            urls: [addSound]
+        });
+    }  
+}();
+
+
+
+
+
+
+
+
+
 var BPM = 60;
 
 var currentBeat = 1;
-var runTIme = function () {
+var runTime = function () {
     setInterval(function() {
         if(currentBeat > 16) {
             currentBeat = 1;
@@ -83,12 +116,46 @@ var changeVoice = function () {
 
 /************************************************//************************************************//************************************************/
 
-
-var currentId;
-var currentObject;
+// turn on and off buttons and toggle css button classes
 $('.square').click(function() {
     $(this).toggleClass('on');
-    currentId = $(this).attr("data-id");
+    var currentId = $(this).attr("data-id");
     page1Buttons[currentId].on = !page1Buttons[currentId].on;
+});
+
+
+
+var pageArray = []
+
+var fillPageArray = function() {
+    var i = 0;
+    for (i; i < 4; i ++) {
+     pageArray[i] = {
+         pageNumber: i + 1,
+         instrument: 'bells'
+     };
+    }}();
+
+var currentPage = 1;
+var currentPageButtons;
+
+var changeInstrumentTo = 'not changed';
+
+$('.sound_bank-selector ul li').click(function () {
+    changeInstrumentTo = $(this).html();
+    changeInstrumentTo = changeInstrumentTo.toLowerCase();
+    alert(changeInstrumentTo);
+    
+    
+    
+   var rows = 1;
+   var loopCounter = 0;
+   for(rows; rows <= 16; rows += 1) {
+    var i = 0;
+    for(i; i <= 35; i ++) {
+        window['page1Buttons'][loopCounter]['sound'] = daftArray[i];  
+        loopCounter += 1;
+    }
+   }
 });
 

@@ -71,7 +71,7 @@ ul {
 }
 
 .instrument_selector ul {
-    width: 100%:
+    width: 100%;
 }
 
 .sound_bank-selector {
@@ -81,5 +81,12 @@ ul {
 
 .sound_bank-selector ul li {
     display: inline-block;
+    background-color: blue;
+    padding: 25px;
 }
+
+.sound_bank-selector ul  {
+    margin-bottom: 40px;
+}
+
 

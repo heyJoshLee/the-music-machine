@@ -89,4 +89,7 @@ ul {
     margin-bottom: 40px;
 }
 
+.selected_bank  {
+    border: 2px solid yellow;
+}
 

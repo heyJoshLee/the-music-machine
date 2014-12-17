@@ -67,13 +67,18 @@ var createSynth= function () {
 
 
 
-
-
-
-
-
-
 var BPM = 60;
+
+$('#BPMInput').change(function() {
+    var inputValue = $('#BPMInput').val();
+    if (inputValue > 10 && inputValue < 300) {
+        BPM = $('#BPMInput').val();
+        $('#currentBPMDiv').html(BPM);
+    }
+});
+
+
+
 
 var currentBeat = 1;
 var runTime = function () {
@@ -95,7 +100,7 @@ var runTime = function () {
             currentBeat += 1;
         
         
-    }, 500);
+    }, BPM * 16.6666666667);
     }();
     
 
@@ -142,10 +147,10 @@ var currentPageButtons;
 var changeInstrumentTo = 'not changed';
 
 $('.sound_bank-selector ul li').click(function () {
-    changeInstrumentTo = $(this).html();
-    changeInstrumentTo = changeInstrumentTo.toLowerCase();
-    alert(changeInstrumentTo);
-    
+    changeInstrumentTo = $(this).attr("data-id");
+   // alert(changeInstrumentTo);
+    $('.sound_bank-selector ul li').removeClass('selected_bank');
+    $(this).addClass('selected_bank');
     
     
    var rows = 1;
@@ -153,9 +158,22 @@ $('.sound_bank-selector ul li').click(function () {
    for(rows; rows <= 16; rows += 1) {
     var i = 0;
     for(i; i <= 35; i ++) {
-        window['page1Buttons'][loopCounter]['sound'] = daftArray[i];  
+        window['page1Buttons'][loopCounter]['sound'] = window[changeInstrumentTo][i];  
         loopCounter += 1;
     }
    }
 });
 
+
+
+/*****
+$('.page_switcher').click(function() {
+    $.ajax({url: $(this).attr("data-id"),
+            success: function(data) {
+            $("#playArea").html(data)  
+            alert(data);
+            }
+})
+})
+
+*****/

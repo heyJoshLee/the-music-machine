@@ -1,3 +1,8 @@
+var playing = true;
+
+$('#pauseButton').click(function() {
+    playing = !playing;
+});
 
 // creates the Button object
 function Button(x,y, sound, on) {
@@ -67,7 +72,7 @@ var createSynth= function () {
 
 
 
-var BPM = 60;
+var BPM = 120;
 
 $('#BPMInput').change(function() {
     var inputValue = $('#BPMInput').val();
@@ -79,17 +84,49 @@ $('#BPMInput').change(function() {
 
 
 
+var BPMFactor;
 
 var currentBeat = 1;
+
 var runTime = function () {
-    setInterval(function() {
-        if(currentBeat > 16) {
-            currentBeat = 1;
-        } 
+    if (playing) {
+    clearInterval(interval);
+    BPMFactor = 60000 / BPM;
+    
+    if(currentBeat > 16) {
+        currentBeat = 1;
+    }
+    
+    $('#light' + currentBeat).animate({opacity:1}, 200);
+    $('#showTime').html(currentBeat);
+    var j = 0;
+        while(j < page1Buttons.length) {
+            if (page1Buttons[j].x === currentBeat && page1Buttons[j].on === true)
+                page1Buttons[j].sound.play();
+                j += 1;
+        }
+        $('#light' + currentBeat).animate({opacity:.25}, 400);
+        currentBeat += 1;
+        interval = setInterval(runTime, BPMFactor);
+}
+}
+        var interval = setInterval(runTime, BPMFactor);
+
+/**********
+var runTime = function () {
+  //  clearInterval(interval);
+    BPMFactor = 60000 / BPM;
+    
+    
+    /setInterval(function() {
+     /   if(currentBeat > 16) {
+      /      currentBeat = 1;
+       / } 
+        
+        
         
         $('#light' + currentBeat).animate({opacity:1}, 200);
         $('#showTime').html(currentBeat);
-        
         var j = 0;
         while(j < page1Buttons.length) {
             if (page1Buttons[j].x === currentBeat && page1Buttons[j].on === true)
@@ -100,10 +137,11 @@ var runTime = function () {
             currentBeat += 1;
         
         
-    }, BPM * 16.6666666667);
+    }, 60000 / BPM);
+    
     }();
     
-
+/*****
 
 /************************************************//************************************************//************************************************/
 

@@ -93,3 +93,10 @@ ul {
     border: 2px solid yellow;
 }
 
+#pauseButton {
+    color: snow;
+    width: 40px;
+    height: 40px;
+    font-size: 48px;
+    margin: 0 auto;
+}

@@ -70,6 +70,30 @@ var createSynth= function () {
     }  
 }();
 
+// create pianoArray and fill it
+var pianoArray = [];
+var createPiano= function () {
+    var i = 0;
+    for(i; i <= 35; i ++) {
+        var addSound =   'audio/piano_'+ numMp3Array[i] + '.mp3';
+        pianoArray[i] = new Howl({
+            urls: [addSound]
+        });
+    }  
+}();
+
+// create pianoArray and fill it
+var percArray = [];
+var createPerc= function () {
+    var i = 0;
+    for(i; i <= 35; i ++) {
+        var addSound =   'audio/perc_'+ numMp3Array[i] + '.mp3';
+        percArray[i] = new Howl({
+            urls: [addSound]
+        });
+    }  
+}();
+
 
 
 var BPM = 120;

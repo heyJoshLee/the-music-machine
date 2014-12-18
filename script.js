@@ -4,6 +4,14 @@ $('#pauseButton').click(function() {
     playing = !playing;
 });
 
+$(document).ready(function() {
+     $.ajax({url: 'page1.html',
+            success: function(data) {
+            $("#page_container").html(data)  
+            }
+})
+})
+
 // creates the Button object
 function Button(x,y, sound, on) {
     this.x = x,
@@ -220,36 +228,7 @@ var runTime = function () {
 }
         var interval = setInterval(runTime, BPMFactor);
 
-/**********
-var runTime = function () {
-  //  clearInterval(interval);
-    BPMFactor = 60000 / BPM;
-    
-    
-    /setInterval(function() {
-     /   if(currentBeat > 16) {
-      /      currentBeat = 1;
-       / } 
-        
-        
-        
-        $('#light' + currentBeat).animate({opacity:1}, 200);
-        $('#showTime').html(currentBeat);
-        var j = 0;
-        while(j < page1Buttons.length) {
-            if (page1Buttons[j].x === currentBeat && page1Buttons[j].on === true)
-                page1Buttons[j].sound.play();
-                j += 1;
-        }
-        $('#light' + currentBeat).animate({opacity:.25}, 400);
-            currentBeat += 1;
-        
-        
-    }, 60000 / BPM);
-    
-    }();
-    
-/*****
+
 
 /************************************************//************************************************//************************************************/
 
@@ -347,6 +326,8 @@ var fillPageArray = function() {
  //  }
 //});
 
+
+
 $(document).on('click', '.page_switcher', function() {
     $.ajax({url: $(this).attr("data-id"),
             success: function(data) {
@@ -354,18 +335,7 @@ $(document).on('click', '.page_switcher', function() {
             //alert(data);
             }
 })
-} )
-
-//localStorage
-
-/*****
-$('.page_switcher').click(function() {
-    $.ajax({url: $(this).attr("data-id"),
-            success: function(data) {
-            $("#page_container").html(data)  
-            alert(data);
-            }
-})
 })
 
-*****/
+
+

@@ -1,6 +1,7 @@
 var playing = true;
 
-$('#pauseButton').click(function() {
+$('.pauseButton').click(function() {
+    $(this).toggleClass('play');
     playing = !playing;
 });
 
@@ -28,8 +29,26 @@ var numMp3Array = [
     18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
     ];
 
+var instrumentNames = ["bells", "daft", "synth", "piano", "perc"];
+
+
 // create bellsArray and fill it
 var bellsArray = [];
+var daftArray = [];
+var synthArray = [];
+var pianoArray = [];
+var percArray = [];
+
+var page1Buttons = [];
+var page2Buttons = [];
+var page3Buttons = [];
+var page4Buttons = [];
+var page5Buttons = [];
+
+
+
+
+
 var createBells = function () {
     var i = 0;
     for(i; i <= 35; i ++) {
@@ -41,7 +60,7 @@ var createBells = function () {
 }();
 
 //create an array and the fill the array with buttons
-var page1Buttons = [];
+
 var fillPage1Buttons = function (){
     //fill a colomn of buttons
         var rows = 1;
@@ -54,7 +73,7 @@ var fillPage1Buttons = function (){
 }();
 
 // create daftArray and fill it
-var daftArray = [];
+
 var createDaft = function () {
     var i = 0;
     for(i; i <= 35; i ++) {
@@ -66,7 +85,6 @@ var createDaft = function () {
 }();
 
 //create an array and the fill the array with buttons
-var page2Buttons = [];
 var fillPage2Buttons = function (){
     //fill a colomn of buttons
         var rows = 1;
@@ -79,7 +97,7 @@ var fillPage2Buttons = function (){
 }();
 
 // create synthArray and fill it
-var synthArray = [];
+
 var createSynth= function () {
     var i = 0;
     for(i; i <= 35; i ++) {
@@ -91,7 +109,6 @@ var createSynth= function () {
 }();
 
 //create an array and the fill the array with buttons
-var page3Buttons = [];
 var fillPage3Buttons = function (){
     //fill a colomn of buttons
         var rows = 1;
@@ -104,7 +121,6 @@ var fillPage3Buttons = function (){
 }();
 
 // create pianoArray and fill it
-var pianoArray = [];
 var createPiano= function () {
     var i = 0;
     for(i; i <= 35; i ++) {
@@ -117,7 +133,6 @@ var createPiano= function () {
 
 
 //create an array and the fill the array with buttons
-var page4Buttons = [];
 var fillPage4Buttons = function (){
     //fill a colomn of buttons
         var rows = 1;
@@ -131,7 +146,6 @@ var fillPage4Buttons = function (){
 
 
 // create pianoArray and fill it
-var percArray = [];
 var createPerc= function () {
     var i = 0;
     for(i; i <= 35; i ++) {
@@ -144,7 +158,6 @@ var createPerc= function () {
 
 
 //create an array and the fill the array with buttons
-var page5Buttons = [];
 var fillPage5Buttons = function (){
     //fill a colomn of buttons
         var rows = 1;
@@ -159,13 +172,17 @@ var fillPage5Buttons = function (){
 
 
 var BPM = 120;
+$(document).ready(function() {
+    $('#currentBPMDiv').html("Current BPM:" +  BPM);
+})
 
 $('#BPMInput').change(function() {
     var inputValue = $('#BPMInput').val();
-    if (inputValue > 10 && inputValue < 300) {
+    if (inputValue > 10 && inputValue < 1001) {
         BPM = $('#BPMInput').val();
-        $('#currentBPMDiv').html(BPM);
-    }
+        $('#currentBPMDiv').html("Current BPM:" + BPM);
+    } else {alert("Please enter a whole number between 10 and 1000.");
+           }
 });
 
 
@@ -314,28 +331,60 @@ var fillPageArray = function() {
     }}();
 
 
+
+//use current insturments
+var updateButtons = function() {
+    for(var i = 0; i < page1Buttons.length; i ++) {
+        var checkButton = "#page1Div .square[data-id='" + i + "']";
+        if(page1Buttons[i].on) {
+        $(checkButton).addClass("on_green")
+        }
+    }
+
+    for(var i = 0; i < page2Buttons.length; i ++) {
+        var checkButton = "#page2Div .square[data-id='" + i + "']";
+        if(page2Buttons[i].on) {
+        $(checkButton).addClass("on_blue")
+        }
+    }
+
+    for(var i = 0; i < page3Buttons.length; i ++) {
+        var checkButton = "#page3Div .square[data-id='" + i + "']";
+        if(page3Buttons[i].on) {
+        $(checkButton).addClass("on_pink")
+        }
+    }
+
+    for(var i = 0; i < page4Buttons.length; i ++) {
+        var checkButton = "#page4Div .square[data-id='" + i + "']";
+        if(page4Buttons[i].on) {
+        $(checkButton).addClass("on_teal")
+        }
+    }    
+
+    for(var i = 0; i < page5Buttons.length; i ++) {
+        var checkButton = "#page5Div .square[data-id='" + i + "']";
+        if(page5Buttons[i].on) {
+        $(checkButton).addClass("on_yellow")
+        }
+    }       
+}
+
     
-   var rows = 1;
-   var loopCounter = 0;
-   //for(rows; rows <= 16; rows += 1) {
-    //var i = 0;
-    //for(i; i <= 35; i ++) {
-      //  window['page1Buttons'][loopCounter]['sound'] = window[changeInstrumentTo][i];  
-        //loopCounter += 1;
-//    }
- //  }
-//});
-
-
 
 $(document).on('click', '.page_switcher', function() {
     $.ajax({url: $(this).attr("data-id"),
             success: function(data) {
             $("#page_container").html(data)  
-            //alert(data);
+            updateButtons();
             }
 })
 })
+
+
+
+// if instruemtn on = true
+// add class to div with the same data id as the instrument
 
 
 

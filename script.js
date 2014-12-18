@@ -45,7 +45,6 @@ var fillPage1Buttons = function (){
         }
 }();
 
-
 // create daftArray and fill it
 var daftArray = [];
 var createDaft = function () {
@@ -56,6 +55,19 @@ var createDaft = function () {
             urls: [addSound]
         });
     }  
+}();
+
+//create an array and the fill the array with buttons
+var page2Buttons = [];
+var fillPage2Buttons = function (){
+    //fill a colomn of buttons
+        var rows = 1;
+        for(rows; rows <= 16; rows += 1) {
+        var i = 0;
+        for(i; i <= 35; i ++) {
+            page2Buttons[page2Buttons.length] = new Button(rows, i + 1, daftArray[i]);
+        } 
+        }
 }();
 
 // create synthArray and fill it
@@ -70,6 +82,19 @@ var createSynth= function () {
     }  
 }();
 
+//create an array and the fill the array with buttons
+var page3Buttons = [];
+var fillPage3Buttons = function (){
+    //fill a colomn of buttons
+        var rows = 1;
+        for(rows; rows <= 16; rows += 1) {
+        var i = 0;
+        for(i; i <= 35; i ++) {
+            page3Buttons[page3Buttons.length] = new Button(rows, i + 1, synthArray[i]);
+        } 
+        }
+}();
+
 // create pianoArray and fill it
 var pianoArray = [];
 var createPiano= function () {
@@ -82,6 +107,21 @@ var createPiano= function () {
     }  
 }();
 
+
+//create an array and the fill the array with buttons
+var page4Buttons = [];
+var fillPage4Buttons = function (){
+    //fill a colomn of buttons
+        var rows = 1;
+        for(rows; rows <= 16; rows += 1) {
+        var i = 0;
+        for(i; i <= 35; i ++) {
+            page4Buttons[page4Buttons.length] = new Button(rows, i + 1, pianoArray[i]);
+        } 
+        }
+}();
+
+
 // create pianoArray and fill it
 var percArray = [];
 var createPerc= function () {
@@ -92,6 +132,20 @@ var createPerc= function () {
             urls: [addSound]
         });
     }  
+}();
+
+
+//create an array and the fill the array with buttons
+var page5Buttons = [];
+var fillPage5Buttons = function (){
+    //fill a colomn of buttons
+        var rows = 1;
+        for(rows; rows <= 16; rows += 1) {
+        var i = 0;
+        for(i; i <= 35; i ++) {
+            page5Buttons[page5Buttons.length] = new Button(rows, i + 1, percArray[i]);
+        } 
+        }
 }();
 
 
@@ -129,6 +183,36 @@ var runTime = function () {
                 page1Buttons[j].sound.play();
                 j += 1;
         }
+    var j = 0;
+    while(j < page2Buttons.length) {
+        if (page2Buttons[j].x === currentBeat && page2Buttons[j].on === true)
+            page2Buttons[j].sound.play();
+            j += 1;
+    }
+    var j = 0;
+    while(j < page3Buttons.length) {
+        if (page3Buttons[j].x === currentBeat && page3Buttons[j].on === true)
+            page3Buttons[j].sound.play();
+            j += 1;
+    }
+    var j = 0;
+    while(j < page4Buttons.length) {
+        if (page4Buttons[j].x === currentBeat && page4Buttons[j].on === true)
+            page4Buttons[j].sound.play();
+            j += 1;
+    }
+    var j = 0;
+    while(j < page5Buttons.length) {
+        if (page5Buttons[j].x === currentBeat && page5Buttons[j].on === true)
+            page5Buttons[j].sound.play();
+            j += 1;
+    }
+        
+        
+        
+        
+        
+        
         $('#light' + currentBeat).animate({opacity:.25}, 400);
         currentBeat += 1;
         interval = setInterval(runTime, BPMFactor);
@@ -170,8 +254,10 @@ var runTime = function () {
 /************************************************//************************************************//************************************************/
 
 
-var selectedVoice;
+/*****
+Preiovus function that changed voices
 
+var selectedVoice;
 var changeVoice = function () {
     var h = 36;
     $.each(page1Buttons, function(index, selectedVoice) {
@@ -179,17 +265,62 @@ var changeVoice = function () {
         h -= 1;
     });
 };
+****/
 
 
 /************************************************//************************************************//************************************************/
 
+// changes class of sound_bank_selector
+var currentPage = 1;
+$('.page_switcher').click(function () {
+    currentPage = $(this).attr('id');
+    $('.page_switcher').removeClass('selected_bank');
+    $(this).addClass('selected_bank');
+});
+    
+
+
 // turn on and off buttons and toggle css button classes
+
+$(document).on('click', '#page1Div .square',function() {
+    $(this).toggleClass('on_green');
+    var currentId = $(this).attr("data-id");
+    page1Buttons[currentId].on = !page1Buttons[currentId].on;
+});
+
+$(document).on('click', '#page2Div .square',function() {
+    $(this).toggleClass('on_blue');
+    var currentId = $(this).attr("data-id");
+    page2Buttons[currentId].on = !page2Buttons[currentId].on;
+});
+
+$(document).on('click', '#page3Div .square',function() {
+    $(this).toggleClass('on_pink');
+    var currentId = $(this).attr("data-id");
+    page3Buttons[currentId].on = !page3Buttons[currentId].on;
+});
+
+
+$(document).on('click', '#page4Div .square',function() {
+    $(this).toggleClass('on_teal');
+    var currentId = $(this).attr("data-id");
+    page4Buttons[currentId].on = !page4Buttons[currentId].on;
+});
+
+$(document).on('click', '#page5Div .square',function() {
+    $(this).toggleClass('on_yellow');
+    var currentId = $(this).attr("data-id");
+    page5Buttons[currentId].on = !page5Buttons[currentId].on;
+});
+
+
+/*****
 $('.square').click(function() {
     $(this).toggleClass('on');
     var currentId = $(this).attr("data-id");
     page1Buttons[currentId].on = !page1Buttons[currentId].on;
 });
-
+****/
 
 
 var pageArray = []
@@ -203,36 +334,35 @@ var fillPageArray = function() {
      };
     }}();
 
-var currentPage = 1;
-var currentPageButtons;
 
-var changeInstrumentTo = 'not changed';
-
-$('.sound_bank-selector ul li').click(function () {
-    changeInstrumentTo = $(this).attr("data-id");
-   // alert(changeInstrumentTo);
-    $('.sound_bank-selector ul li').removeClass('selected_bank');
-    $(this).addClass('selected_bank');
-    
     
    var rows = 1;
    var loopCounter = 0;
-   for(rows; rows <= 16; rows += 1) {
-    var i = 0;
-    for(i; i <= 35; i ++) {
-        window['page1Buttons'][loopCounter]['sound'] = window[changeInstrumentTo][i];  
-        loopCounter += 1;
-    }
-   }
-});
+   //for(rows; rows <= 16; rows += 1) {
+    //var i = 0;
+    //for(i; i <= 35; i ++) {
+      //  window['page1Buttons'][loopCounter]['sound'] = window[changeInstrumentTo][i];  
+        //loopCounter += 1;
+//    }
+ //  }
+//});
 
+$(document).on('click', '.page_switcher', function() {
+    $.ajax({url: $(this).attr("data-id"),
+            success: function(data) {
+            $("#page_container").html(data)  
+            //alert(data);
+            }
+})
+} )
 
+//localStorage
 
 /*****
 $('.page_switcher').click(function() {
     $.ajax({url: $(this).attr("data-id"),
             success: function(data) {
-            $("#playArea").html(data)  
+            $("#page_container").html(data)  
             alert(data);
             }
 })

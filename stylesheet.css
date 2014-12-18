@@ -2,7 +2,9 @@
 
 
 
-
+/******************
+BUTTON
+********************/
 .square {
     width: 40px;
     height: 40px;
@@ -10,14 +12,56 @@
     background-size: contain;
     opacity: .5; 
     margin: 5px 3px;
+    z-index: 100px;
 }
 
-.on {
+.on_green {
     box-shadow: 0px 4px 40px #428E12;
     background-image: url(img/green_button.png);
     border-radius: 100%;
     opacity: 1;
 }
+
+.on_blue {
+    background-image: url(img/blue_button.png);
+    box-shadow: 0px 4px 40px #428E12;
+    border-radius: 100%;
+    opacity: 1;
+}
+
+.on_pink {
+    background-image: url(img/pink_button.png);
+    box-shadow: 0px 4px 40px #428E12;
+    border-radius: 100%;
+    opacity: 1;
+}
+
+
+.on_teal {
+    background-image: url(img/teal_button.png);
+    box-shadow: 0px 4px 40px #428E12;
+    border-radius: 100%;
+    opacity: 1;
+}
+
+.on_yellow {
+    background-image: url(img/yellow_button.png);
+    box-shadow: 0px 4px 40px #428E12;
+    border-radius: 100%;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 ul li {
     list-style: none; 
@@ -86,7 +130,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f0f0f', end
     color: white;
 }
 
-.sound_bank-selector ul li {
+.page_switcher {
     display: inline-block;
     background-color: blue;
     padding: 25px;

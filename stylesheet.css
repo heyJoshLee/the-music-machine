@@ -6,6 +6,12 @@
     color: rgba(10, 10, 10, 1);
 }
 
+#page_wrapper {
+    width: 1500px;
+    background-color: rgba(225, 198, 143, .7);
+    margin: 0 auto;    
+}
+
 /******************
 BUTTON
 ********************/
@@ -77,9 +83,16 @@ ul {
 }
 
 
-/*******************
-BACKGROUND COLOR
-*****************/
+#title {
+    font-size: 89px;
+    font-weight: 700; 
+    color: black;
+    position: relative;
+    top: -140px;
+    left: -15px;
+    color: #FFF8EA;
+    margin-bottom: -20px;
+}
 
 #playArea {
     margin: 0 auto;
@@ -87,7 +100,7 @@ BACKGROUND COLOR
     min-width: 800px;
     width: 1200px;
     padding: 15px; 
-    background-color: rgba(10, 10, 10, .8);
+    background-color: rgba(99, 68, 8, .9);
 }
 
 

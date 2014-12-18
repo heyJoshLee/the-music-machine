@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     
     <title>Sound Squares</title>    
  
     </head>
 <body>
+ 
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ 
+  <div id="page_wrapper">
    
-   <h1><div id="showTime">1</div></h1>
   
   
 
@@ -18,8 +30,9 @@
    
    <div id="playArea">
    <div class="pauseButton"></div>
+   <h1 id='title'>The Music Machine</h1>
    
-   <input type="text" id='BPMInput'>
+   <input type="text" id='BPMInput' placeholder="Enter BPM">
    <div id="currentBPMDiv"></div>
   
    
@@ -48,9 +61,12 @@
    
       </div> <!-- page_container -->
        
+       <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+       
    </div> <!-- playArea -->
    
    
+   </div>
    <script src='jquery-1.11.1.js'></script>
    <script src='howler.js'></script>
    <script src='script.js'></script>

@@ -1,6 +1,10 @@
 /* CSS */
 
 
+/******************
+MAIN
+********************/
+
 * {
     font-family: 'Lato', sans-serif;
     color: rgba(10, 10, 10, 1);
@@ -92,6 +96,10 @@ ul {
     left: -15px;
     color: #FFF8EA;
     margin-bottom: -20px;
+    border: 2px solid black;
+    padding: 0px;
+    z-index: 1px;
+    pointer-events: none;
 }
 
 #playArea {
@@ -108,13 +116,6 @@ ul {
     background-color: none;
 }
 
-.light {
-    width: 40px;
-    height: 10px; 
-    margin: 0 auto;
-    background-color: yellow;
-    opacity: .25;
-}
 
 .instrument_selector {
     color: white;
@@ -156,6 +157,7 @@ ul {
     width: 250px;
     height: 130px;
     font-size: 48px;
+    z-index: 30px;
 }
 
 .play {
@@ -178,4 +180,25 @@ ul {
     font-size: 24px;
     margin-bottom: -40px;
     color: snow;
+}
+
+#light_list  {
+    border: 2px solid black;
+    width: 100%;
+}
+
+
+#light_list li {
+    display: inline;
+    margin: 25px;
+    height: 10px;
+}
+
+
+
+
+
+.light {
+    background-color: yellow;
+    opacity: .25;
 }

@@ -1,3 +1,8 @@
+var globalVars = {
+    playing: true,
+    autoplay: false
+}
+
 var playing = true;
 
 $('.pauseButton').click(function() {
@@ -5,13 +10,6 @@ $('.pauseButton').click(function() {
     playing = !playing;
 });
 
-$(document).ready(function() {
-     $.ajax({url: 'page1.html',
-            success: function(data) {
-            $("#page_container").html(data)  
-            }
-})
-})
 
 // creates the Button object
 function Button(x,y, sound, on) {
@@ -174,6 +172,8 @@ var fillPage5Buttons = function (){
 var BPM = 120;
 $(document).ready(function() {
     $('#currentBPMDiv').html("Current BPM:" +  BPM);
+    $('.page').hide();
+    $('#page1Div').show();
 })
 
 $('#BPMInput').change(function() {
@@ -200,7 +200,7 @@ var runTime = function () {
         currentBeat = 1;
     }
     
-    $('#light' + currentBeat).animate({opacity:1}, 200);
+    $('.light' + currentBeat).animate({opacity:1}, 200);
     $('#showTime').html(currentBeat);
     var j = 0;
         while(j < page1Buttons.length) {
@@ -238,7 +238,7 @@ var runTime = function () {
         
         
         
-        $('#light' + currentBeat).animate({opacity:.25}, 400);
+        $('.light' + currentBeat).animate({opacity:.25}, 400);
         currentBeat += 1;
         interval = setInterval(runTime, BPMFactor);
 }
@@ -353,20 +353,13 @@ var updateButtons = function() {
 }
 
     
-
-$(document).on('click', '.page_switcher', function() {
-    $.ajax({url: $(this).attr("data-id"),
-            success: function(data) {
-            $("#page_container").html(data)  
-            updateButtons();
-            }
-})
+$(".page_switcher").click(function() {
+    $(".page").hide();
+    var useID = "page" + $(this).attr('id') + "Div";
+    $('#' + useID).show(); 
+    
 })
 
-
-
-// if instruemtn on = true
-// add class to div with the same data id as the instrument
 
 
 

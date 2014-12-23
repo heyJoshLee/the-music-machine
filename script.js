@@ -247,24 +247,6 @@ var runTime = function () {
 
 
 
-/************************************************//************************************************//************************************************/
-
-
-/*****
-Preiovus function that changed voices
-
-var selectedVoice;
-var changeVoice = function () {
-    var h = 36;
-    $.each(page1Buttons, function(index, selectedVoice) {
-        index.sound = selectedVoice + h;
-        h -= 1;
-    });
-};
-****/
-
-
-/************************************************//************************************************//************************************************/
 
 // changes class of sound_bank_selector
 var currentPage = 1;

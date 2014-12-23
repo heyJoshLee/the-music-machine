@@ -1,15 +1,24 @@
 var globalVars = {
     playing: true,
-    autoplay: false
-}
+    autoplay: true
+};
 
-var playing = true;
 
 $('.pauseButton').click(function() {
     $(this).toggleClass('play');
-    playing = !playing;
+    globalVars.playing = !globalVars.playing;
 });
 
+
+$("#auto_play_button").click(function() {
+  
+    globalVars.autoplay = !globalVars.autoplay;
+    if (globalVars.autoplay) {
+      $("#auto_play_span").html("On")
+    } else {
+         $("#auto_play_span").html("Off")
+    }
+})
 
 // creates the Button object
 function Button(x,y, sound, on) {
@@ -77,7 +86,8 @@ var createDaft = function () {
     for(i; i <= 35; i ++) {
         var addSound =   'audio/daft_'+ numMp3Array[i] + '.mp3';
         daftArray[i] = new Howl({
-            urls: [addSound]
+            urls: [addSound],
+            volume: 0.2
         });
     }  
 }();
@@ -124,7 +134,8 @@ var createPiano= function () {
     for(i; i <= 35; i ++) {
         var addSound =   'audio/piano_'+ numMp3Array[i] + '.mp3';
         pianoArray[i] = new Howl({
-            urls: [addSound]
+            urls: [addSound],
+            volume: 1.4
         });
     }  
 }();
@@ -192,7 +203,7 @@ var BPMFactor;
 var currentBeat = 1;
 
 var runTime = function () {
-    if (playing) {
+    if (globalVars.playing) {
     clearInterval(interval);
     BPMFactor = 60000 / BPM;
     
@@ -263,18 +274,28 @@ $('.page_switcher').click(function () {
 $(document).on('click', '#page1Div .square',function() {
     $(this).toggleClass('on_green');
     var currentId = $(this).attr("data-id");
+    if(globalVars.autoplay && page1Buttons[currentId].on === false) {
+        page1Buttons[currentId].sound.play();
+    }
     page1Buttons[currentId].on = !page1Buttons[currentId].on;
+    
 });
 
 $(document).on('click', '#page2Div .square',function() {
     $(this).toggleClass('on_blue');
     var currentId = $(this).attr("data-id");
+    if(globalVars.autoplay && page2Buttons[currentId].on === false) {
+        page2Buttons[currentId].sound.play();
+    }
     page2Buttons[currentId].on = !page2Buttons[currentId].on;
 });
 
 $(document).on('click', '#page3Div .square',function() {
     $(this).toggleClass('on_pink');
     var currentId = $(this).attr("data-id");
+    if(globalVars.autoplay && page3Buttons[currentId].on === false) {
+        page3Buttons[currentId].sound.play();
+    }
     page3Buttons[currentId].on = !page3Buttons[currentId].on;
 });
 
@@ -282,12 +303,18 @@ $(document).on('click', '#page3Div .square',function() {
 $(document).on('click', '#page4Div .square',function() {
     $(this).toggleClass('on_teal');
     var currentId = $(this).attr("data-id");
+    if(globalVars.autoplay && page4Buttons[currentId].on === false) {
+        page4Buttons[currentId].sound.play();
+    }
     page4Buttons[currentId].on = !page4Buttons[currentId].on;
 });
 
 $(document).on('click', '#page5Div .square',function() {
     $(this).toggleClass('on_yellow');
     var currentId = $(this).attr("data-id");
+    if(globalVars.autoplay && page5Buttons[currentId].on === false) {
+        page5Buttons[currentId].sound.play();
+    }
     page5Buttons[currentId].on = !page5Buttons[currentId].on;
 });
 

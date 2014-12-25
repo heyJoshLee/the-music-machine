@@ -17,7 +17,7 @@ MAIN
 }
 
 /******************
-BUTTON
+SQUARES
 ********************/
 .square {
     width: 40px;
@@ -66,6 +66,23 @@ BUTTON
 }
 
 
+/******************
+BUTTONS
+********************/
+
+.pauseButton {
+    background-image: url(img/pause_icon.png);
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 130px;
+    font-size: 48px;
+    z-index: 30px;
+}
+
+.play {
+    background-image: url(img/play_icon.png);
+}
+
 #bigDiv {
     width: 400px;
     height: 400px;
@@ -112,9 +129,10 @@ ul {
 }
 
 
-#column_1 {
-    background-color: none;
-}
+/******************
+SOUND BANKS
+********************/
+
 
 
 .instrument_selector {
@@ -151,18 +169,7 @@ ul {
     border: 7px solid black;
 }
 
-.pauseButton {
-    background-image: url(img/pause_icon.png);
-    background-repeat: no-repeat;
-    width: 250px;
-    height: 130px;
-    font-size: 48px;
-    z-index: 30px;
-}
 
-.play {
-    background-image: url(img/play_icon.png);
-}
 
 #BPMInput {
     position: relative;
@@ -182,11 +189,14 @@ ul {
     color: snow;
 }
 
+/******************
+LIGHTS
+********************/
+
 #light_list  {
     width: 100%;
     margin-top: 20px;
 }
-
 
 #light_list li {
     display: inline;
@@ -203,12 +213,7 @@ ul {
 }
 
 
-#page_container .column:nth-child(4n){
-    border-right: 3px solid rgba(255,255,255,.3);
-}
-#page_container .column:last-child {
-    border-right: none;
-}
+
 .button_off {
     opacity: .2;
 }
@@ -219,6 +224,14 @@ ul {
 /************
 column styling
 *************/
+
+
+#page_container .column:nth-child(4n){
+    border-right: 3px solid rgba(255,255,255,.3);
+}
+#page_container .column:last-child {
+    border-right: none;
+}
 
 .column li:nth-child(36),
 .column li:nth-child(35),
@@ -275,3 +288,11 @@ column styling
      background-color: rgba(255, 255, 255, 0.1);
 }
 
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

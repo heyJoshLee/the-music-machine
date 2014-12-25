@@ -284,6 +284,17 @@ $('.page_switcher').click(function () {
 
 // turn on and off buttons and toggle css button classes
 
+var down = false;
+    $(document).mousedown(function() {
+    down = true;
+    }).mouseup(function() {
+    down = false;  
+    });
+               
+               
+         
+               
+
 $(document).on('click', '#page1Div .square',function() {
     $(this).toggleClass('on_green');
     var currentId = $(this).attr("data-id");
@@ -293,6 +304,19 @@ $(document).on('click', '#page1Div .square',function() {
     page1Buttons[currentId].on = !page1Buttons[currentId].on;
     
 });
+ $('#page1Div .square').mouseover(function() {
+       if(down == true) {
+           $(this).addClass('on_green');
+           var currentId = $(this).attr("data-id");
+           if(globalVars.autoplay && page1Buttons[currentId].on === false) {
+           page1Buttons[currentId].sound.play();
+           }
+           page1Buttons[currentId].on = !page1Buttons[currentId].on;
+       } 
+    });
+         
+
+
 
 $(document).on('click', '#page2Div .square',function() {
     $(this).toggleClass('on_blue');
@@ -302,6 +326,17 @@ $(document).on('click', '#page2Div .square',function() {
     }
     page2Buttons[currentId].on = !page2Buttons[currentId].on;
 });
+ $('#page2Div .square').mouseover(function() {
+       if(down == true) {
+           $(this).addClass('on_blue');
+           var currentId = $(this).attr("data-id");
+           if(globalVars.autoplay && page2Buttons[currentId].on === false) {
+           page2Buttons[currentId].sound.play();
+           }
+           page2Buttons[currentId].on = !page2Buttons[currentId].on;
+       } 
+    });
+         
 
 $(document).on('click', '#page3Div .square',function() {
     $(this).toggleClass('on_pink');
@@ -311,6 +346,16 @@ $(document).on('click', '#page3Div .square',function() {
     }
     page3Buttons[currentId].on = !page3Buttons[currentId].on;
 });
+$('#page3Div .square').mouseover(function() {
+       if(down == true) {
+           $(this).addClass('on_pink');
+           var currentId = $(this).attr("data-id");
+           if(globalVars.autoplay && page3Buttons[currentId].on === false) {
+           page3Buttons[currentId].sound.play();
+           }
+           page3Buttons[currentId].on = !page3Buttons[currentId].on;
+       } 
+    });
 
 
 $(document).on('click', '#page4Div .square',function() {
@@ -321,6 +366,17 @@ $(document).on('click', '#page4Div .square',function() {
     }
     page4Buttons[currentId].on = !page4Buttons[currentId].on;
 });
+$('#page4Div .square').mouseover(function() {
+       if(down == true) {
+           $(this).addClass('on_teal');
+           var currentId = $(this).attr("data-id");
+           if(globalVars.autoplay && page4Buttons[currentId].on === false) {
+           page4Buttons[currentId].sound.play();
+           }
+           page4Buttons[currentId].on = !page4Buttons[currentId].on;
+       } 
+    });
+
 
 $(document).on('click', '#page5Div .square',function() {
     $(this).toggleClass('on_yellow');
@@ -330,6 +386,16 @@ $(document).on('click', '#page5Div .square',function() {
     }
     page5Buttons[currentId].on = !page5Buttons[currentId].on;
 });
+$('#page5Div .square').mouseover(function() {
+       if(down == true) {
+           $(this).addClass('on_yellow');
+           var currentId = $(this).attr("data-id");
+           if(globalVars.autoplay && page5Buttons[currentId].on === false) {
+           page5Buttons[currentId].sound.play();
+           }
+           page5Buttons[currentId].on = !page5Buttons[currentId].on;
+       } 
+    });
 
 
 

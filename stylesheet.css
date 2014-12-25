@@ -183,8 +183,8 @@ ul {
 }
 
 #light_list  {
-    border: 2px solid black;
     width: 100%;
+    margin-top: 20px;
 }
 
 
@@ -192,6 +192,7 @@ ul {
     display: inline;
     margin: 25px;
     height: 10px;
+    width: 20px;
 }
 
 
@@ -213,6 +214,11 @@ ul {
 }
 
 
+
+
+/************
+column styling
+*************/
 
 .column li:nth-child(36),
 .column li:nth-child(35),

@@ -1,7 +1,11 @@
+/*global $:false */
+
 var globalVars = {
     playing: true,
-    autoplay: true
+    autoplay: true,
+    currentPage: '1',
 };
+
 
 
 $('.pauseButton').click(function() {
@@ -14,18 +18,19 @@ $("#auto_play_button").click(function() {
   
     globalVars.autoplay = !globalVars.autoplay;
     if (globalVars.autoplay) {
-      $("#auto_play_span").html("On")
+      $("#auto_play_span").html("On");
     } else {
-         $("#auto_play_span").html("Off")
+         $("#auto_play_span").html("Off");
     }
-})
+});
 
 // creates the Button object
 function Button(x,y, sound, on) {
     this.x = x,
     this.y = y,
     this.sound = sound, 
-    this.on = false
+    this.on = false,
+    this.muted = false
 }
 
 // hower.js is retuning funky values when adding intergers and the number 0.
@@ -185,7 +190,11 @@ $(document).ready(function() {
     $('#currentBPMDiv').html("Current BPM:" +  BPM);
     $('.page').hide();
     $('#page1Div').show();
-})
+    $('.mute').hide();
+    $('.clear').hide();
+    $('#mute_page' + globalVars.currentPage).show();
+    $('#clear_page' + globalVars.currentPage).show();
+});
 
 $('#BPMInput').change(function() {
     var inputValue = $('#BPMInput').val();
@@ -215,31 +224,31 @@ var runTime = function () {
     $('#showTime').html(currentBeat);
     var j = 0;
         while(j < page1Buttons.length) {
-            if (page1Buttons[j].x === currentBeat && page1Buttons[j].on === true)
+            if (page1Buttons[j].x === currentBeat && page1Buttons[j].on === true && page1Buttons[j].muted === false)
                 page1Buttons[j].sound.play();
                 j += 1;
         }
-    var j = 0;
+    j = 0;
     while(j < page2Buttons.length) {
-        if (page2Buttons[j].x === currentBeat && page2Buttons[j].on === true)
+        if (page2Buttons[j].x === currentBeat && page2Buttons[j].on === true && page2Buttons[j].muted === false)
             page2Buttons[j].sound.play();
             j += 1;
     }
-    var j = 0;
+    j = 0;
     while(j < page3Buttons.length) {
-        if (page3Buttons[j].x === currentBeat && page3Buttons[j].on === true)
+        if (page3Buttons[j].x === currentBeat && page3Buttons[j].on === true && page3Buttons[j].muted === false)
             page3Buttons[j].sound.play();
             j += 1;
     }
-    var j = 0;
+    j = 0;
     while(j < page4Buttons.length) {
-        if (page4Buttons[j].x === currentBeat && page4Buttons[j].on === true)
+        if (page4Buttons[j].x === currentBeat && page4Buttons[j].on === true && page4Buttons[j].muted === false)
             page4Buttons[j].sound.play();
             j += 1;
     }
-    var j = 0;
+    j = 0;
     while(j < page5Buttons.length) {
-        if (page5Buttons[j].x === currentBeat && page5Buttons[j].on === true)
+        if (page5Buttons[j].x === currentBeat && page5Buttons[j].on === true && page5Buttons[j].muted === false)
             page5Buttons[j].sound.play();
             j += 1;
     }
@@ -249,22 +258,26 @@ var runTime = function () {
         
         
         
-        $('.light' + currentBeat).animate({opacity:.25}, 400);
+        $('.light' + currentBeat).animate({opacity:0.25}, 400);
         currentBeat += 1;
         interval = setInterval(runTime, BPMFactor);
 }
-}
+};
         var interval = setInterval(runTime, BPMFactor);
 
 
 
 
 // changes class of sound_bank_selector
-var currentPage = 1;
+
 $('.page_switcher').click(function () {
-    currentPage = $(this).attr('id');
+    globalVars.currentPage = $(this).attr('id');
     $('.page_switcher').removeClass('selected_bank');
     $(this).addClass('selected_bank');
+    $('.mute').hide();
+    $('.clear').hide();
+    $('#mute_page' + globalVars.currentPage).show();
+    $('#clear_page' + globalVars.currentPage).show();
 });
     
 
@@ -319,16 +332,8 @@ $(document).on('click', '#page5Div .square',function() {
 });
 
 
-/*****
-$('.square').click(function() {
-    $(this).toggleClass('on');
-    var currentId = $(this).attr("data-id");
-    page1Buttons[currentId].on = !page1Buttons[currentId].on;
-});
-****/
 
-
-var pageArray = []
+var pageArray = [];
 
 var fillPageArray = function() {
     var i = 0;
@@ -343,41 +348,43 @@ var fillPageArray = function() {
 
 //use current insturments
 var updateButtons = function() {
-    for(var i = 0; i < page1Buttons.length; i ++) {
-        var checkButton = "#page1Div .square[data-id='" + i + "']";
+    var i;
+    var checkButton;
+    for(i = 0; i < page1Buttons.length; i ++) {
+        checkButton = "#page1Div .square[data-id='" + i + "']";
         if(page1Buttons[i].on) {
-        $(checkButton).addClass("on_green")
+        $(checkButton).addClass("on_green");
         }
     }
 
-    for(var i = 0; i < page2Buttons.length; i ++) {
-        var checkButton = "#page2Div .square[data-id='" + i + "']";
+    for(i = 0; i < page2Buttons.length; i ++) {
+        checkButton = "#page2Div .square[data-id='" + i + "']";
         if(page2Buttons[i].on) {
-        $(checkButton).addClass("on_blue")
+        $(checkButton).addClass("on_blue");
         }
     }
 
-    for(var i = 0; i < page3Buttons.length; i ++) {
-        var checkButton = "#page3Div .square[data-id='" + i + "']";
+    for(i = 0; i < page3Buttons.length; i ++) {
+        checkButton = "#page3Div .square[data-id='" + i + "']";
         if(page3Buttons[i].on) {
-        $(checkButton).addClass("on_pink")
+        $(checkButton).addClass("on_pink");
         }
     }
 
-    for(var i = 0; i < page4Buttons.length; i ++) {
-        var checkButton = "#page4Div .square[data-id='" + i + "']";
+    for(i = 0; i < page4Buttons.length; i ++) {
+        checkButton = "#page4Div .square[data-id='" + i + "']";
         if(page4Buttons[i].on) {
-        $(checkButton).addClass("on_teal")
+        $(checkButton).addClass("on_teal");
         }
     }    
 
-    for(var i = 0; i < page5Buttons.length; i ++) {
-        var checkButton = "#page5Div .square[data-id='" + i + "']";
+    for(i = 0; i < page5Buttons.length; i ++) {
+        checkButton = "#page5Div .square[data-id='" + i + "']";
         if(page5Buttons[i].on) {
-        $(checkButton).addClass("on_yellow")
+        $(checkButton).addClass("on_yellow");
         }
     }       
-}
+};
 
     
 $(".page_switcher").click(function() {
@@ -385,7 +392,92 @@ $(".page_switcher").click(function() {
     var useID = "page" + $(this).attr('id') + "Div";
     $('#' + useID).show(); 
     
-})
+});
+
+
+
+$('.mute').click(function() {
+    $(this).toggleClass('button_off');
+    var k;
+    switch (globalVars.currentPage){
+        case '1':
+            k = 0;
+            for(k; k < page1Buttons.length; k++){
+                page1Buttons[k].muted = !page1Buttons[k].muted;
+            }
+            break;
+        case '2':
+            k = 0;
+            for(k; k < page2Buttons.length; k++){
+                page2Buttons[k].muted = !page2Buttons[k].muted;
+            }
+            break;
+        case '3':
+            k = 0;
+            for(k; k < page3Buttons.length; k++){
+                page3Buttons[k].muted = !page3Buttons[k].muted;
+            }
+            break;
+        case '4':
+            k = 0;
+            for(k; k < page4Buttons.length; k++){
+                page4Buttons[k].muted = !page4Buttons[k].muted;
+            }
+            break;
+        case '5':
+            k = 0;
+            for(k; k < page5Buttons.length; k++){
+                page5Buttons[k].muted = !page5Buttons[k].muted;
+            }
+            break;    
+    }
+});
+
+$('.clear').click(function() {
+    var k;
+    switch (globalVars.currentPage){
+        case '1':
+            k = 0;
+            for(k; k < page1Buttons.length; k++){
+                page1Buttons[k].on = false;
+            }
+                $('#page1Div .square').removeClass('on_green');
+            break;
+        case '2':
+            k = 0;
+            for(k; k < page2Buttons.length; k++){
+                page2Buttons[k].on = false;
+            }
+                $('#page2Div .square').removeClass('on_blue');
+            break;
+        case '3':
+            k = 0;
+            for(k; k < page3Buttons.length; k++){
+                page3Buttons[k].on = false;
+            }
+                $('#page3Div .square').removeClass('on_pink');
+            break;
+         case '4':
+            k = 0;
+            for(k; k < page4Buttons.length; k++){
+                page4Buttons[k].on = false;
+            }
+                $('#page4Div .square').removeClass('on_teal');
+            break;
+        case '5':
+            k = 0;
+            for(k; k < page5Buttons.length; k++){
+                page5Buttons[k].on = false;
+            }
+                $('#page5Div .square').removeClass('on_yellow');
+            break;
+    }});
+            
+
+
+
+
+
 
 
 

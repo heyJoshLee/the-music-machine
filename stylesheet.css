@@ -1,236 +1,215 @@
 /* CSS */
 
-
 /******************
 MAIN
 ********************/
 
 * {
-    font-family: 'Lato', sans-serif;
-    color: rgba(10, 10, 10, 1);
+  font-family: "Lato", sans-serif;
+  color: rgba(10, 10, 10, 1);
 }
 
 #page_wrapper {
-    width: 1500px;
-    background-color: snow;
-    margin: 0 auto;    
+  width: 1500px;
+  background-color: snow;
+  margin: 0 auto;
 }
 
 /******************
 SQUARES
 ********************/
 .square {
-    width: 40px;
-    height: 40px;
-    background-image: url(img/red_button.png);
-    background-size: contain;
-    opacity: .5; 
-    margin: 5px 3px;
-    z-index: 100px;
+  width: 40px;
+  height: 40px;
+  background-image: url(img/red_button.png);
+  background-size: contain;
+  opacity: 0.5;
+  margin: 5px 3px;
+  z-index: 100px;
 }
 
 .on_green {
-    box-shadow: 0px 4px 40px #428E12;
-    background-image: url(img/green_button.png);
-    border-radius: 100%;
-    opacity: 1;
+  box-shadow: 0px 4px 40px #428e12;
+  background-image: url(img/green_button.png);
+  border-radius: 100%;
+  opacity: 1;
 }
 
 .on_blue {
-    background-image: url(img/blue_button.png);
-    box-shadow: 0px 4px 40px #514B7D;
-    border-radius: 100%;
-    opacity: 1;
+  background-image: url(img/blue_button.png);
+  box-shadow: 0px 4px 40px #514b7d;
+  border-radius: 100%;
+  opacity: 1;
 }
 
 .on_pink {
-    background-image: url(img/pink_button.png);
-    box-shadow: 0px 4px 40px #FF0F86;
-    border-radius: 100%;
-    opacity: 1;
+  background-image: url(img/pink_button.png);
+  box-shadow: 0px 4px 40px #ff0f86;
+  border-radius: 100%;
+  opacity: 1;
 }
 
-
 .on_teal {
-    background-image: url(img/teal_button.png);
-    box-shadow: 0px 4px 40px #04DDBC;
-    border-radius: 100%;
-    opacity: 1;
+  background-image: url(img/teal_button.png);
+  box-shadow: 0px 4px 40px #04ddbc;
+  border-radius: 100%;
+  opacity: 1;
 }
 
 .on_yellow {
-    background-image: url(img/yellow_button.png);
-    box-shadow: 0px 4px 40px #C8A002;
-    border-radius: 100%;
-    opacity: 1;
+  background-image: url(img/yellow_button.png);
+  box-shadow: 0px 4px 40px #c8a002;
+  border-radius: 100%;
+  opacity: 1;
 }
-
 
 /******************
 BUTTONS
 ********************/
 
 .pauseButton {
-    background-image: url(img/pause_icon.png);
-    background-repeat: no-repeat;
-    width: 250px;
-    height: 130px;
-    font-size: 48px;
-    z-index: 30px;
+  background-image: url(img/pause_icon.png);
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 130px;
+  font-size: 48px;
+  z-index: 30px;
 }
 
 .play {
-    background-image: url(img/play_icon.png);
+  background-image: url(img/play_icon.png);
 }
 
 #bigDiv {
-    width: 400px;
-    height: 400px;
-    border: 2px solid red;
+  width: 400px;
+  height: 400px;
+  border: 2px solid red;
 }
-
 
 ul li {
-    list-style: none; 
-    padding: 0 8px;
+  list-style: none;
+  padding: 0 8px;
 }
-
 
 ul {
-    display: inline-block;
-    margin: 0px;
-    text-align: center;
-    padding: 0px;
+  display: inline-block;
+  margin: 0px;
+  text-align: center;
+  padding: 0px;
 }
 
-
 #title {
-    font-size: 89px;
-    font-weight: 700; 
-    color: black;
-    position: relative;
-    top: -140px;
-    left: -15px;
-    color: #FFF8EA;
-    margin-bottom: -20px;
-    border: 2px solid black;
-    padding: 0px;
-    z-index: 1px;
-    pointer-events: none;
+  font-size: 89px;
+  font-weight: 700;
+  color: black;
+  position: relative;
+  top: -140px;
+  left: -15px;
+  color: #fff8ea;
+  margin-bottom: -20px;
+  padding: 0px;
+  z-index: 1px;
+  pointer-events: none;
 }
 
 #playArea {
-    margin: 0 auto;
-    text-align: center;
-    min-width: 800px;
-    width: 1200px;
-    padding: 15px; 
-    background-color: rgba(1,1,1, 0.9);
+  margin: 0 auto;
+  text-align: center;
+  min-width: 800px;
+  width: 1200px;
+  padding: 15px;
+  background-color: rgba(1, 1, 1, 0.9);
 }
-
 
 /******************
 SOUND BANKS
 ********************/
 
-
-
 .instrument_selector {
-    color: white;
-    margin-bottom: 15px;
+  color: white;
+  margin-bottom: 15px;
 }
 
 .instrument_selector ul li {
-    display: inline-block;
-    padding: 8px;
-    width: 240px;
+  display: inline-block;
+  padding: 8px;
+  width: 240px;
 }
 
 .instrument_selector ul {
-    width: 100%;
+  width: 100%;
 }
 
 #page_container {
-    margin-top: 20px
+  margin-top: 20px;
 }
 
 .page_switcher {
-    display: inline-block;
-    background-color: rgba(210, 210, 210, 1);
-    padding: 25px;
-    margin: 0 5px;
+  display: inline-block;
+  background-color: rgba(210, 210, 210, 1);
+  padding: 25px;
+  margin: 0 5px;
 }
 
-.sound_bank-selector ul  {
-    margin-bottom: 80px;
+.sound_bank-selector ul {
+  margin-bottom: 80px;
 }
 
-.selected_bank  {
-    border: 7px solid black;
+.selected_bank {
+  border: 7px solid black;
 }
-
-
 
 #BPMInput {
-    position: relative;
-    top: -100px;
-    width: 600px;
-    height: 100px;
-    font-size: 70px;
-    margin-bottom: -10px;
+  position: relative;
+  top: -100px;
+  width: 600px;
+  height: 100px;
+  font-size: 70px;
+  margin-bottom: -10px;
 }
 
-
 #currentBPMDiv {
-    position: relative; 
-    top: -60px;
-    font-size: 24px;
-    margin-bottom: -40px;
-    color: snow;
+  position: relative;
+  top: -60px;
+  font-size: 24px;
+  margin-bottom: -40px;
+  color: snow;
 }
 
 /******************
 LIGHTS
 ********************/
 
-#light_list  {
-    width: 100%;
-    margin-top: 20px;
+#light_list {
+  width: 100%;
+  margin-top: 20px;
 }
 
 #light_list li {
-    display: inline;
-    margin: 25px;
-    height: 10px;
-    width: 20px;
+  display: inline;
+  margin: 25px;
+  height: 10px;
+  width: 20px;
 }
-
-
 
 .light {
-    background-color: yellow;
-    opacity: .25;
+  background-color: yellow;
+  opacity: 0.25;
 }
-
-
 
 .button_off {
-    opacity: .2;
+  opacity: 0.2;
 }
-
-
-
 
 /************
 column styling
 *************/
 
-
-#page_container .column:nth-child(4n){
-    border-right: 3px solid rgba(255,255,255,.3);
+#page_container .column:nth-child(4n) {
+  border-right: 3px solid rgba(255, 255, 255, 0.3);
 }
 #page_container .column:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .column li:nth-child(36),
@@ -240,7 +219,7 @@ column styling
 .column li:nth-child(32),
 .column li:nth-child(31),
 .column li:nth-child(30) {
-     background-color: rgba(130, 207, 93, 0.1);
+  background-color: rgba(130, 207, 93, 0.1);
 }
 
 .column li:nth-child(29),
@@ -250,7 +229,7 @@ column styling
 .column li:nth-child(25),
 .column li:nth-child(24),
 .column li:nth-child(23) {
-     background-color: rgba(63, 53, 120, 0.1);
+  background-color: rgba(63, 53, 120, 0.1);
 }
 
 .column li:nth-child(22),
@@ -260,7 +239,7 @@ column styling
 .column li:nth-child(18),
 .column li:nth-child(17),
 .column li:nth-child(16) {
-     background-color: rgba(255, 80, 67, 0.1);
+  background-color: rgba(255, 80, 67, 0.1);
 }
 
 .column li:nth-child(15),
@@ -270,9 +249,8 @@ column styling
 .column li:nth-child(11),
 .column li:nth-child(10),
 .column li:nth-child(9) {
-     background-color: rgba(8, 225, 183, 0.1);
+  background-color: rgba(8, 225, 183, 0.1);
 }
-
 
 .column li:nth-child(8),
 .column li:nth-child(7),
@@ -281,18 +259,18 @@ column styling
 .column li:nth-child(4),
 .column li:nth-child(3),
 .column li:nth-child(2) {
-     background-color: rgba(203, 163, 55, 0.1);
+  background-color: rgba(203, 163, 55, 0.1);
 }
 
 .column li:first-child {
-     background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
